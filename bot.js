@@ -40,7 +40,8 @@ client.on('message', msg => {
     let embed = new Discord.RichEmbed()
                               .setAuthor(msg.author.username, msg.author.avatarURL)
                               .setTitle("Open in Place 2.0")
-                              .setDescription(`[Click here](${link}) to open the coordinates (**${x}**, **${y}**) in Place 2.0.`);
+                              .setURL(link)
+                              .setDescription(`Open the coordinates (**${x}**, **${y}**) in Place 2.0.`);
     getCanvasImage(x, y).then(image => {
         embed.setThumbnail("attachment://pixels.png");
         msg.channel.send({embed: embed, file: { attachment: image, name: "pixels.png" }});
